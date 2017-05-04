@@ -20,7 +20,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader'
       },
       {
@@ -79,11 +79,6 @@ module.exports = {
     }),
     new ExtractTextPlugin({
       filename: 'css/app.css',
-      disabled: !isProd,
-      allChunks: true
-    }),
-    new ExtractTextPlugin({
-      filename: 'js/app.bundle.js',
       disabled: !isProd,
       allChunks: true
     }),
